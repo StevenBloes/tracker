@@ -63,6 +63,7 @@ function showApp() {
 }
 
 const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
 const video = document.getElementById("video");
 const resultText = document.getElementById("result");
 
@@ -88,7 +89,7 @@ document.addEventListener("click", () => {
 }, { once: true });
 
 startBtn.addEventListener("click", startScanning);
-document.getElementById("stopBtn").onclick = stopScanning;
+stopBtn.addEventListener("click", stopScanning);
 
 
 function startScanning() {
