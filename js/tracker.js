@@ -50,7 +50,7 @@ function startScanning() {
 		  console.log(e);
 		}
  
-        resultText.textContent = `
+        resultText.innerHTML = `
 		id: ${result.text}<br>
 		Productnaam<br>
 		Productlocatie
