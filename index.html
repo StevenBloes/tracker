@@ -3,17 +3,32 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scanner TEST</title>
+	
+    <!-- Supabase CDN - Supabase Database -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- ZXING Reading barcodes -->
     <script src="https://unpkg.com/@zxing/library@latest"></script>
 	<!--STYLESHEETS-->
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
   </head>
   <body>
+  
+<div id="auth">
+  <input id="email" type="email" placeholder="Email"><br><br>
+  <input id="password" type="password" placeholder="Password"><br><br>
+
+  <button onclick="signUp()">Sign Up</button>
+  <button onclick="login()">Login</button>
+</div>
+
+  <div id="app" style="display:none;">
     <div class="container">
       <h1>Barcode Scanner</h1>
       <button id="startBtn" class="big-btn">Scan barcode</button>
       <video id="video" style="display:none;"></video>
 	  <button id="stopBtn" class="big-btn">Stop</button>
       <div id="result"></div>
+	</div>
 	</div>
     <script src="./js/tracker.js"></script>
   </body>
