@@ -9,7 +9,7 @@ hints.set(ZXing.DecodeHintType.POSSIBLE_FORMATS, [
 
 const codeReader = new ZXing.BrowserBarcodeReader(hints);
 
-const beep = new Audio("beep.mp3");
+const beep = new Audio("./audio/beep.mp3");
 
 let scanning = false;
 startBtn.style.display = "inline-block";
@@ -46,11 +46,9 @@ function startScanning() {
         console.log("Scanned:", result.text);
         resultText.textContent = result.text;
 
-        // ✅ Feedback
         beep.play();
         navigator.vibrate?.(100);
 
-        // ✅ STOP EVERYTHING
         stopScanning();
       }
     }
