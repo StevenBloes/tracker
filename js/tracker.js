@@ -50,7 +50,11 @@ function startScanning() {
 		  console.log(e);
 		}
  
-        resultText.textContent = result.text;
+        resultText.textContent = `
+		id: ${result.text}<br>
+		Productnaam<br>
+		Productlocatie
+		`;
 		
         stopScanning();
       }
