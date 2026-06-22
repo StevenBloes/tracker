@@ -1,0 +1,29 @@
+.hidden {
+  display: none;
+}
+
+.big-btn {
+  font-size: 18px;          /* bigger text */
+  padding: 15px 25px;       /* larger touch area */
+  margin: 10px;
+  border-radius: 12px;      /* nicer rounded corners */
+  border: none;
+  background-color: #0078d4;
+  color: white;
+  width: 90%;               /* almost full width */
+  max-width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0.1em 0.1em 0.6em #AAAAAAAA;
+}
+
+
+#startBtn {
+  background-color: #4d4;
+}
+
+
+#stopBtn {
+  background-color: #d44;
+}
