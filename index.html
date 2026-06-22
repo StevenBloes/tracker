@@ -1,48 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Scanner TEST</title>
-<script src="https://unpkg.com/@zxing/library@latest"></script>
-</head>
-<body>
-<h2>Scanner TEST</h2>
-
-<video id="video" width="300"></video>
-<p id="result"></p>
-
-<script>
+  <head>
+    <title>Scanner TEST</title>
+    <script src="https://unpkg.com/@zxing/library@latest"></script>
+  </head>
+  <body>
+    <h2>Scanner TEST</h2>
+    <button id="startBtn">Scan barcode</button>
+    <button id="stopBtn" style="display:none;">Stop</button>
+    <video id="video" width="100%" style="display:none;"></video>
+    <h3 id="result"></h3>
+    <script>
+const startBtn = document.getElementById("startBtn");
+const video = document.getElementById("video");
+const resultText = document.getElementById("result");
 
 const hints = new Map();
 hints.set(ZXing.DecodeHintType.POSSIBLE_FORMATS, [
-  ZXing.BarcodeFormat.EAN_13
+  ZXing.BarcodeFormat.EAN_13,  ZXing.BarcodeFormat.UPC_A
 ]);
 
 const codeReader = new ZXing.BrowserBarcodeReader(hints);
-const video = document.getElementById("video");
-const result = document.getElementById("result");
+
+const beep = new Audio("beep.mp3");
+
+let scanning = false;
+
+// Unlock audio (important for mobile)
+document.addEventListener("click", () => {
+  beep.play().then(() => {
+    beep.pause();
+    beep.currentTime = 0;
+  });
+}, { once: true });
+
+startBtn.addEventListener("click", startScanning);
+document.getElementById("stopBtn").onclick = stopScanning;
+
+function startScanning() {
+  if (scanning) return;
+
+  scanning = true;
+  video.style.display = "block";
+  startBtn.style.display = "none";
+  stopBtn.style.display = "inline-block";
 
 
-codeReader.decodeFromConstraints(
-  {
-    video: {
-      facingMode: "environment"
+  codeReader.decodeFromConstraints(
+    {
+      video: { facingMode: "environment" }
+    },
+    video,
+    (result, err) => {
+      if (result) {
+        console.log("Scanned:", result.text);
+        resultText.textContent = result.text;
+        
+        beep.play();
+        navigator.vibrate?.(100);
+
+        stopScanning();
+      }
     }
-  },
-  document.getElementById("video"),
-  (result, err) => {
-    if (result) {
-      console.log(result.text);
-    }
+  );
+}
+
+function stopScanning() {
+  codeReader.reset();
+
+  const stream = video.srcObject;
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
   }
-);
 
+  video.srcObject = null;
 
-codeReader.decodeFromVideoDevice(null, video, (res, err) => {
-  if (res) {
-    result.textContent = res.text;
-  }
-})
-
-</script>
-
-</body>
+  scanning = false;
+  video.style.display = "none";
+  startBtn.style.display = "inline-block";
+  stopBtn.style.display = "none";
+}
+    </script>
+  </body>
+</html>
