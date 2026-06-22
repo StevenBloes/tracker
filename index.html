@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scanner TEST</title>
+<script src="https://unpkg.com/@zxing/library@latest"></script>
+</head>
+<body>
+<h2>Scanner TEST</h2>
+
+<video id="video" width="300"></video>
+<p id="result"></p>
+
+<script>
+
+const hints = new Map();
+hints.set(ZXing.DecodeHintType.POSSIBLE_FORMATS, [
+  ZXing.BarcodeFormat.EAN_13
+]);
+
+const codeReader = new ZXing.BrowserBarcodeReader(hints);
+const video = document.getElementById("video");
+const result = document.getElementById("result");
+
+
+codeReader.decodeFromConstraints(
+  {
+    video: {
+      facingMode: "environment"
+    }
+  },
+  document.getElementById("video"),
+  (result, err) => {
+    if (result) {
+      console.log(result.text);
+    }
+  }
+);
+
+
+codeReader.decodeFromVideoDevice(null, video, (res, err) => {
+  if (res) {
+    result.textContent = res.text;
+  }
+})
+
+</script>
+
+</body>
