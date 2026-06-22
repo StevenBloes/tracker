@@ -12,6 +12,8 @@ const codeReader = new ZXing.BrowserBarcodeReader(hints);
 const beep = new Audio("beep.mp3");
 
 let scanning = false;
+startBtn.style.display = "inline-block";
+stopBtn.style.display = "none";
 
 // Unlock audio (important for mobile)
 document.addEventListener("click", () => {
