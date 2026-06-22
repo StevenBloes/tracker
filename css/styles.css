@@ -1,5 +1,5 @@
-.hidden {
-  display: none;
+html {
+  font-size: 16px;
 }
 
 body {
@@ -7,11 +7,9 @@ body {
   padding: 0;
 }
 
-
 .container {
   padding: 10px;
 }
-
 
 .big-btn {
   font-size: 2rem;
@@ -28,6 +26,9 @@ body {
   box-shadow: 0.1em 0.1em 0.6em #AAAAAAAA;
 }
 
+.hidden {
+  display: none;
+}
 
 #startBtn {
   background-color: #4d4;
@@ -36,4 +37,9 @@ body {
 
 #stopBtn {
   background-color: #d44;
+}
+
+#video {
+	max-height: 80%;
+	width: 100%;
 }
