@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scanner TEST</title>
     <script src="https://unpkg.com/@zxing/library@latest"></script>
 	<!--STYLESHEETS-->
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
   </head>
   <body>
-    <h2>Scanner TEST</h2>
-    <button id="startBtn" class="big-btn">Scan barcode</button>
-    <button id="stopBtn" class="big-btn">Stop</button>
-    <video id="video" width="100%" style="display:none;"></video>
-    <h3 id="result"></h3>
+    <div class="container">
+      <h2>Scanner TEST</h2>
+      <button id="startBtn" class="big-btn">Scan barcode</button>
+      <video id="video" width="100%" style="display:none;"></video>
+	  <button id="stopBtn" class="big-btn">Stop</button>
+      <h3 id="result"></h3>
+	</div>
     <script src="./js/tracker.js"></script>
   </body>
 </html>
