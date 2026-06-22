@@ -43,12 +43,15 @@ function startScanning() {
     video,
     (result, err) => {
       if (result) {
-        console.log("Scanned:", result.text);
+        try {
+	      beep.play();
+		  navigator.vibrate?.([100, 50, 100]);
+		} catch (e){
+		  console.log(e);
+		}
+ 
         resultText.textContent = result.text;
-
-        beep.play();
-        navigator.vibrate?.(100);
-
+		
         stopScanning();
       }
     }
