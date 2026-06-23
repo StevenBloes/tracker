@@ -1,0 +1,31 @@
+export const title = "KLA W32 - Startpagina";
+
+function createWelcomeText(){
+	return "Welcome";
+}
+
+export function render() {
+  return `
+    <h1 id="welcome">${createWelcomeText()}</h1>
+
+    <button id="btnPlanning">Planning</button>
+    <button id="btnStock">Stock Management</button>
+    <button id="btnQuality">Quality Management</button>
+  `;
+}
+
+export function init(root) {
+  root.querySelector("#btnPlanning").onclick = () => {
+    window.location.hash = "#/planning";
+  };
+
+  root.querySelector("#btnStock").onclick = () => {
+    window.location.hash = "#/stock";
+  };
+
+  root.querySelector("#btnQuality").onclick = () => {
+    window.location.hash = "#/";
+  };
+}
+
+export function destroy() {}
