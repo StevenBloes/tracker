@@ -7,8 +7,11 @@ const routes = {
   "#/stock": {
     component: "stock/index",
     children: {
+      "map": "stock/map",
+	  "pallet": "stock/pallet"
       "search": "stock/search",
       "scan": "stock/scan"
+	  
     }
   }
 };

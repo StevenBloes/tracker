@@ -9,5 +9,5 @@ export function init(root) {
 }
 
 export function destroy() {
-  
+
 }
