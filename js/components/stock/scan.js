@@ -1,8 +1,73 @@
 export const title = "KLA W32 - Pallet Stock";
 
+// limit possible barcode types
+const hints = new Map();
+hints.set(ZXing.DecodeHintType.POSSIBLE_FORMATS, [
+  ZXing.BarcodeFormat.EAN_13, ZXing.BarcodeFormat.UPC_A
+]);
+
+const codeReader = new ZXing.BrowserBarcodeReader(hints);
+
+
+let scanning = false;
+
+
+function startScanning(root) {
+  if (scanning) return;
+
+  scanning = true;
+  const resultElement = root.querySelector("#result");
+  const videoElement = root.querySelector("#video");
+
+  codeReader.decodeFromConstraints(
+    {
+      video: { facingMode: "environment" }
+    },
+    videoElement,
+    (result, err) => {
+      if (result) {
+        try {
+          navigator.vibrate?.([100, 50, 100]);
+        } catch (e) {
+          console.log(e);
+        }
+
+        resultElement.innerHTML = `
+		      id: ${result.text}<br>
+          Productnaam<br>
+		      Productlocatie
+		    `;
+
+        stopScanning();
+      }
+    }
+  );
+}
+
+function stopScanning(root) {
+
+  const videoElement = root.querySelector("#video");
+
+  codeReader.reset();
+
+  // Extra safety: stop camera stream
+  const stream = videoElement.srcObject;
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+  }
+
+  videoElement.srcObject = null;
+
+  scanning = false;
+}
+
+
+
 export function render() {
   return `
     <h1>Barcode Scanner</h1>
+    <h2 id="result"></h2>
+    <video id="video" style="width: 100%; height: auto;"></video>
     <button id="btnStopScan" class="big-btn red-btn">Stop</button>
   `;
 };
@@ -11,8 +76,11 @@ export function init(root) {
   root.querySelector("#btnStopScan").onclick = () => {
     window.location.hash = "#/stock";
   };
+
+  startScanning(root);
+
 }
 
-export function destroy() {
-
+export function destroy(root) {
+  stopScanning(root);
 }
