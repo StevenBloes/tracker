@@ -8,16 +8,22 @@ hints.set(ZXing.DecodeHintType.POSSIBLE_FORMATS, [
 
 const codeReader = new ZXing.BrowserBarcodeReader(hints);
 
-
+let currentRoot = null;
 let scanning = false;
 
 
 function startScanning(root) {
   if (scanning) return;
 
+  currentRoot = root;
   scanning = true;
+
   const resultElement = root.querySelector("#result");
   const videoElement = root.querySelector("#video");
+
+  if (videoElement.srcObject) {
+    videoElement.srcObject.getTracks().forEach(track => track.stop());
+  }
 
   codeReader.decodeFromConstraints(
     {
@@ -38,15 +44,15 @@ function startScanning(root) {
 		      Productlocatie
 		    `;
 
-        stopScanning();
+        stopScanning(root);
       }
     }
   );
 }
 
-function stopScanning(root) {
+function stopScanning() {
 
-  const videoElement = root.querySelector("#video");
+  const videoElement = currentRoot.querySelector("#video");
 
   codeReader.reset();
 
@@ -59,8 +65,8 @@ function stopScanning(root) {
   videoElement.srcObject = null;
 
   scanning = false;
+  currentRoot = null;
 }
-
 
 
 export function render() {
@@ -74,8 +80,14 @@ export function render() {
   `;
 };
 
+
 export function init(root) {
+  window.addEventListener("beforeunload", () => {
+    stopScanning();
+  });
+
   root.querySelector("#btnStopScan").onclick = () => {
+    stopScanning();
     window.location.hash = "#/stock";
   };
 
@@ -83,5 +95,5 @@ export function init(root) {
 }
 
 export function destroy() {
-
+  stopScanning();
 }
