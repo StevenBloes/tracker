@@ -1,3 +1,5 @@
+import { checkUser } from "../services/authService.js";
+
 let currentComponent = null;
 let currentRoot = null;
 
@@ -8,10 +10,9 @@ const routes = {
     component: "stock/index",
     children: {
       "map": "stock/map",
-	  "pallet": "stock/pallet"
+	    "pallet": "stock/pallet",
       "search": "stock/search",
       "scan": "stock/scan"
-	  
     }
   }
 };

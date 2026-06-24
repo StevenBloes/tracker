@@ -69,15 +69,18 @@ export function render() {
     <div id="auth">
       <input id="email" type="email" placeholder="Email"><br><br>
       <input id="password" type="password" placeholder="Password"><br><br>
-      <button onclick="signUp()">Sign Up</button>
-      <button onclick="login()">Login</button>
-  </div>
+      <button id="btnSignUp">Sign Up</button>
+      <button id="btnLogin">Log in</button>
+    </div>
   `;
 }
 
 export function init(root) {
+  //root.querySelector("");
   root.querySelector("#btnSignUp").onclick = () => { signUp(); };
   root.querySelector("#btnLogin").onclick = () => { login(); };
+
+  //checkUser();
 }
 
-export function destroy() {}
+export function destroy() { }
