@@ -1,4 +1,5 @@
 import { checkUser } from "./services/authService.js";
+import { supabaseClient } from "./services/supabaseClient.js";
 
 let currentComponent = null;
 let currentRoot = null;
@@ -52,7 +53,11 @@ export async function handleRoute() {
   if (!isLoggedIn) {
     loadLogin();
     return;
-  };
+  } else {
+    window.addEventListener("beforeunload", () => {
+      supabaseClient.auth.signOut();
+    });
+  }
 
   const hash = window.location.hash || "#/";
   const parts = hash.split("/").filter(Boolean); // ["#", "products", "phones"]
@@ -63,10 +68,10 @@ export async function handleRoute() {
 
   const route = routes[base];
 
-  if (!route){
-     return loadComponent("home")
+  if (!route) {
+    return loadComponent("home")
   } else {
-      console.log(`path ${hash} exists`);
+    console.log(`path ${hash} exists`);
   };
 
   loadComponent(route.component).then(() => {

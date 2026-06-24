@@ -17,7 +17,8 @@ export async function signUp(email, password) {
   if (error) {
     alert(error.message)
   } else {
-    alert(/*"Check your email to confirm signup!"*/"Signup confirmed!")
+    console.log("Signup succesfull")
+    alert(/*"Check your email to confirm signup!"*/"Registratie gelukt!")
   }
 }
 
@@ -31,7 +32,7 @@ export async function login(email, password) {
   if (error) {
     alert(error.message)
   } else {
-    showApp()
+    console.log("Login succesfull");
   }
 }
 
