@@ -19,6 +19,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: linear-gradient(to bottom,
+      #E8F5E9,
+      #FFFFFF);
+
 }
 
 .logo-container {
@@ -33,7 +37,7 @@ body {
   align-items: center;
   background-color: #f2f2f2;
   border-radius: 50%;
-  box-shadow: 0 4px 10px #4451;
+  box-shadow: 0 4px 10px #4455;
 }
 
 .login-text-container {
@@ -43,6 +47,7 @@ body {
   justify-content: center;
   align-items: center;
   row-gap: 0.5em;
+  margin-bottom: 10%;
 }
 
 .login-h1 {
@@ -51,42 +56,61 @@ body {
   color: #006300;
 }
 
-.login-p {
+.login-h2 {
   margin: 0px;
+  font-size: 1.1em;
   font-weight: 600;
   color: #2b8121;
 }
 
-.login-btn {
-  background-color: #4ea13f;
-  color: #f2f2f2;
-  border: none;
+.login-p {
+  font-weight: 600;
+  font-size: 0.9em;
+  margin-top: 1.5em;
+  color: #2b8121;
+}
 
-  
+.login-button-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.5em;
+  width: 90%;
+}
+
+.login-btn {
+  background: linear-gradient(to bottom,
+      #5FBF5A,
+      #4EA13F
+    );
+  color: #f2f2f2;
+  border: solid #4EA13F 2px;
   font-size: 1.6rem;
   width: 100%;
   border-radius: 12px;
-  padding: 0.2em 0.4em;
-  margin: 0.2em 0em;
-
+  padding: 0.3em 0.2em;
 }
 
 .signup-btn {
-  color: #2b8121;
-  border: solid #4ea13f 2px;
-  background-color: #fff;
-
-  
+  color: #4ea13f;
+  border: solid #62B254 2px;
+  background: linear-gradient(to bottom,
+      #FFFFFF,
+      #F2F2F2);
   font-size: 1.6rem;
   width: 100%;
   border-radius: 12px;
-  padding: 0.2em 0.4em;
-  margin: 0.2em 0em;
-  
+  padding: 0.3em 0.2em;
+}
+
+.login-input-container {
+  width: 90%;
 }
 
 .login-input {
-  width: 90%;
+  width: 100%;
 }
 
 .big-btn {
