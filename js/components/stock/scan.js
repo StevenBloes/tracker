@@ -65,10 +65,12 @@ function stopScanning(root) {
 
 export function render() {
   return `
-    <h1>Barcode Scanner</h1>
-    <h2 id="result"></h2>
-    <video id="video" style="width: 100%; height: auto;"></video>
-    <button id="btnStopScan" class="big-btn red-btn">Stop</button>
+    <div class="container">
+      <h1>Barcode Scanner</h1>
+      <p id="result"></p>
+      <video id="video" style="width: 100%; height: auto;"></video>
+      <button id="btnStopScan" class="big-btn red-btn">Stop</button>
+    </div>
   `;
 };
 
@@ -78,9 +80,8 @@ export function init(root) {
   };
 
   startScanning(root);
-
 }
 
-export function destroy(root) {
-  stopScanning(root);
+export function destroy() {
+
 }
