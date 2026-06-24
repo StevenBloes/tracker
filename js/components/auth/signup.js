@@ -23,7 +23,7 @@ export function render() {
         <input id="email" type="email" placeholder="Email" class="login-input login-user-input">
         <input id="password" type="password" placeholder="Password" class="login-input login-password-input">
       </div>
-      <button id="btnSignUp" class="signup-btn">Login</button>
+      <button id="btnSignUp" class="signup-btn">Registreer</button>
     </div>
   `;
 };
