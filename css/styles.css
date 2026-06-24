@@ -30,12 +30,12 @@ body {
   display: none;
 }
 
-#startBtn {
+.green-btn {
   background-color: #4d4;
 }
 
 
-#stopBtn {
+.red-btn {
   background-color: #d44;
 }
 

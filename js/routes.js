@@ -1,4 +1,4 @@
-import { checkUser } from "../services/authService.js";
+import { checkUser } from "./services/authService.js";
 
 let currentComponent = null;
 let currentRoot = null;
@@ -10,14 +10,50 @@ const routes = {
     component: "stock/index",
     children: {
       "map": "stock/map",
-	    "pallet": "stock/pallet",
+      "pallet": "stock/pallet",
       "search": "stock/search",
       "scan": "stock/scan"
     }
   }
 };
 
-export function handleRoute() {
+function toggleAuthUI(isLoggedIn) {
+  const auth = document.getElementById("auth");
+  const app = document.getElementById("app");
+
+  auth.classList.toggle("hidden", isLoggedIn);
+  app.classList.toggle("hidden", !isLoggedIn);
+}
+
+
+async function loadLogin() {
+  const auth = document.getElementById("auth");
+
+  const module = await import("./components/auth/login.js");
+
+  auth.innerHTML = "";
+  const root = document.createElement("div");
+  root.innerHTML = module.render();
+
+  currentComponent = module;
+  currentRoot = root;
+
+  if (module.init) module.init(root);
+
+  auth.appendChild(root);
+}
+
+
+export async function handleRoute() {
+  const isLoggedIn = await checkUser();
+
+  toggleAuthUI(isLoggedIn);
+
+  if (!isLoggedIn) {
+    loadLogin();
+    return;
+  };
+
   const hash = window.location.hash || "#/";
   const parts = hash.split("/").filter(Boolean); // ["#", "products", "phones"]
 
@@ -27,7 +63,11 @@ export function handleRoute() {
 
   const route = routes[base];
 
-  if (!route) return loadComponent("home");
+  if (!route){
+     return loadComponent("home")
+  } else {
+      console.log(`path ${hash} exists`);
+  };
 
   loadComponent(route.component).then(() => {
     if (child && route.children && route.children[child]) {

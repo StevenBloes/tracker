@@ -1,16 +1,10 @@
-const supabaseUrl = 'https://odhvvyovhqdghxdnljkt.supabase.co'
-const supabaseKey = 'sb_publishable_4iY1n-fsStaHmqH76m5ecA_9DWglVOT'
-
-// Create client
-const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey)
+import { supabaseClient } from "./supabaseClient.js";
 
 // Check if user is already logged in
 export async function checkUser() {
   const { data: { session } } = await supabaseClient.auth.getSession()
 
-  if (session) {
-    showApp()
-  }
+  return session ? true : false;
 }
 
 // SIGN UP
@@ -28,7 +22,7 @@ export async function signUp(email, password) {
 }
 
 // LOGIN
-async function login(email, password) {
+export async function login(email, password) {
   const { data, error } = await supabaseClient.auth.signInWithPassword({
     email,
     password
@@ -42,7 +36,7 @@ async function login(email, password) {
 }
 
 // LOGOUT
-async function logout() {
+export async function logout() {
   await supabaseClient.auth.signOut()
   location.reload()
 }
