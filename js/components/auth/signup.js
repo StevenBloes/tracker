@@ -1,15 +1,15 @@
-export const title = "KLA W32 | Log in";
+export const title = "KLA W32 | Registereer";
 
-import { login } from "../../services/authService.js";
+import { signUp } from "../../services/authService.js";
 
 
-async function submitLogin(e) {
+async function submitSignUp(e) {
     e.preventDefault();
 
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
 
-    await login(email, password);
+    await signUp(email, password);
 
     const redirect = sessionStorage.getItem("redirectAfterLogin") || "#/";
     sessionStorage.removeItem("redirectAfterLogin");
@@ -18,19 +18,18 @@ async function submitLogin(e) {
 
 export function render() {
     return `
-    <div style="width:100%;">
+   <div style="width:100%;">
       <div class="login-input-container">
         <input id="email" type="email" placeholder="Email" class="login-input login-user-input">
         <input id="password" type="password" placeholder="Password" class="login-input login-password-input">
       </div>
-      <button id="btnLogin" class="login-btn">Login</button>
+      <button id="btnSignUp" class="signup-btn">Login</button>
     </div>
-    
   `;
 };
 
 export function init(root) {
-    root.querySelector("#btnLogin").onclick = (e) => submitLogin(e);
+    root.querySelector("#btnSignUp").onclick = (e) => submitSignUp(e);
 }
 
 export function destroy() {

@@ -50,6 +50,51 @@ body {
   margin-bottom: 10%;
 }
 
+.login-input-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.5em;
+  margin-bottom: 5%;
+}
+
+.login-input {
+  font-size: 1.1em;
+  width: 80%;
+  padding: 0.4em 0.2em;
+  padding-left: 2em;
+  border-radius: 6px;
+  background-color: #F6F6F6;
+  border: solid #F2F2F2 2px;
+}
+
+.login-input:focus {
+  background-color: #FFF;
+  outline-color: #5FBF5A;
+  outline-width: 2px;
+  outline-style: solid;
+}
+
+.login-password-input {
+  background-image: url('../img/lock.svg');
+	background-size: 1.2em 1.2em;
+	background-position: 0.4em 0.4em;
+	background-repeat: no-repeat;
+}
+
+.login-user-input {
+  background-image: url('../img/mail.svg');
+	background-size: 1.2em 1.2em;
+	background-position: 0.4em 0.4em;
+	background-repeat: no-repeat;
+}
+
+.login-input::placeholder {
+  color: #DDD;
+}
+
 .login-h1 {
   margin: 0px;
   font-weight: 700;
@@ -68,6 +113,7 @@ body {
   font-size: 0.9em;
   margin-top: 1.5em;
   color: #2b8121;
+  text-decoration: underline;
 }
 
 .login-button-container {
@@ -83,8 +129,7 @@ body {
 .login-btn {
   background: linear-gradient(to bottom,
       #5FBF5A,
-      #4EA13F
-    );
+      #4EA13F);
   color: #f2f2f2;
   border: solid #4EA13F 2px;
   font-size: 1.6rem;
@@ -103,14 +148,6 @@ body {
   width: 100%;
   border-radius: 12px;
   padding: 0.3em 0.2em;
-}
-
-.login-input-container {
-  width: 90%;
-}
-
-.login-input {
-  width: 100%;
 }
 
 .big-btn {

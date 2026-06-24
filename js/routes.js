@@ -4,8 +4,17 @@ import { supabaseClient } from "./services/supabaseClient.js";
 let currentComponent = null;
 let currentRoot = null;
 
+
 const routes = {
   "#/": { component: "home" },
+
+  "#/auth": {
+    component: "auth/index",
+    children: {
+      "login": "auth/login",
+      "signup": "auth/signup"
+    }
+  },
 
   "#/stock": {
     component: "stock/index",
@@ -18,40 +27,15 @@ const routes = {
   }
 };
 
-function toggleAuthUI(isLoggedIn) {
-  const auth = document.getElementById("auth");
-  const app = document.getElementById("app");
-
-  auth.classList.toggle("hidden", isLoggedIn);
-  app.classList.toggle("hidden", !isLoggedIn);
-}
-
-
-async function loadLogin() {
-  const auth = document.getElementById("auth");
-
-  const module = await import("./components/auth/login.js");
-
-  auth.innerHTML = "";
-  const root = document.createElement("div");
-  root.innerHTML = module.render();
-
-  currentComponent = module;
-  currentRoot = root;
-
-  if (module.init) module.init(root);
-
-  auth.appendChild(root);
-}
-
 
 export async function handleRoute() {
+  const hash = window.location.hash || "#/";
+
   const isLoggedIn = await checkUser();
 
-  toggleAuthUI(isLoggedIn);
-
-  if (!isLoggedIn) {
-    loadLogin();
+  if (!isLoggedIn && !hash.startsWith("#/auth")) {
+    sessionStorage.setItem("redirectAfterLogin", hash);
+    window.location.hash = "#/auth";
     return;
   } else {
     window.addEventListener("beforeunload", () => {
@@ -59,8 +43,8 @@ export async function handleRoute() {
     });
   }
 
-  const hash = window.location.hash || "#/";
-  const parts = hash.split("/").filter(Boolean); // ["#", "products", "phones"]
+
+  const parts = hash.split("/").filter(Boolean);
 
   const base = `#/${parts[1] || ""}`;
   const child = parts[2];
@@ -77,6 +61,7 @@ export async function handleRoute() {
   loadComponent(route.component).then(() => {
     if (child && route.children && route.children[child]) {
       loadChildComponent(route.children[child], param);
+      return;
     }
   });
 }
