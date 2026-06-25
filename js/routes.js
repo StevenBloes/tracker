@@ -20,9 +20,11 @@ const routes = {
     component: "stock/index",
     children: {
       "map": "stock/map",
+      "move": "stock/move",
       "pallet": "stock/pallet",
       "search": "stock/search",
-      "scan": "stock/scan"
+      "scan": "stock/scan",
+      "stage": "stock/stage"
     }
   }
 };
@@ -30,7 +32,7 @@ const routes = {
 
 export async function handleRoute() {
   const hash = window.location.hash || "#/";
-
+  console.log(window.location.hash);
   const isLoggedIn = await checkUser();
 
   if (!isLoggedIn && !hash.startsWith("#/auth")) {
@@ -42,7 +44,6 @@ export async function handleRoute() {
       supabaseClient.auth.signOut();
     });
   }
-
 
   const parts = hash.split("/").filter(Boolean);
 

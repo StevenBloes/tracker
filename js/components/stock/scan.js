@@ -42,13 +42,7 @@ function startScanning(root) {
           console.log(e);
         }
 
-        resultElement.innerHTML = `
-		      id: ${result.text}<br>
-          Productnaam<br>
-		      Productlocatie
-		    `;
-
-        stopScanning();
+        window.location.hash = `#/stock/pallet/${result}`;
       }
     }
   );
