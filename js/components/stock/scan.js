@@ -96,11 +96,10 @@ export function init(root) {
   root.querySelector("#btnScan").onclick = () => {
     if (scanning) {
       stopScanning();  
+      window.location.hash = "#/stock";
     } else {
       startScanning(root);
     }
-    
-    window.location.hash = "#/stock";
   };
 
   startScanning(root);
