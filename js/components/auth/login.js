@@ -19,11 +19,11 @@ async function submitLogin(e) {
 export function render() {
     return `
     <div style="width:100%;">
-      <div class="login-input-container">
-        <input id="email" type="email" placeholder="Email" class="login-input login-user-input">
-        <input id="password" type="password" placeholder="Password" class="login-input login-password-input">
+      <div class="auth-input-container">
+        <input id="email" type="email" placeholder="Email" class="auth-input auth-user-input">
+        <input id="password" type="password" placeholder="Password" class="auth-input auth-password-input">
       </div>
-      <button id="btnLogin" class="login-btn">Login</button>
+      <button id="btnLogin" class="auth-login-btn">Log in</button>
     </div>
     
   `;
@@ -31,6 +31,7 @@ export function render() {
 
 export function init(root) {
     root.querySelector("#btnLogin").onclick = (e) => submitLogin(e);
+    document.getElementById("authH2").textContent = "Log in om verder te gaan";
 }
 
 export function destroy() {

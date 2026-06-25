@@ -19,17 +19,18 @@ async function submitSignUp(e) {
 export function render() {
     return `
    <div style="width:100%;">
-      <div class="login-input-container">
-        <input id="email" type="email" placeholder="Email" class="login-input login-user-input">
-        <input id="password" type="password" placeholder="Password" class="login-input login-password-input">
+      <div class="auth-input-container">
+        <input id="email" type="email" placeholder="Email" class="auth-input auth-user-input">
+        <input id="password" type="password" placeholder="Password" class="auth-input auth-password-input">
       </div>
-      <button id="btnSignUp" class="signup-btn">Registreer</button>
+      <button id="btnSignUp" class="auth-signup-btn">Registreer</button>
     </div>
   `;
 };
 
 export function init(root) {
     root.querySelector("#btnSignUp").onclick = (e) => submitSignUp(e);
+    document.getElementById("authH2").textContent = "Registreer om verder te gaan";
 }
 
 export function destroy() {

@@ -2,7 +2,7 @@ export const title = "KLA W32 - Pallet Stock";
 
 export function render() {
   return `
-    <div id="child-outlet">
+    <div id="child-outlet" class="container">
       <h1>Pallet Stock</h1>
       <button id="btnProducts" class="big-btn">Zoek pallet op product</button>
       <button id="btnBarcodes" class="big-btn">Scan Barcode</button>  
