@@ -48,7 +48,7 @@ function startScanning(root) {
 		      Productlocatie
 		    `;
 
-        stopScanning(root);
+        stopScanning();
       }
     }
   );
