@@ -53,6 +53,9 @@ function startScanning(root) {
 function stopScanning() {
 
   const videoElement = currentRoot.querySelector("#video");
+  const buttonElement = root.querySelector("#btnScan");
+  
+  buttonElement.textContent = "Nieuwe Scan";
 
   codeReader.reset();
 
@@ -75,7 +78,7 @@ export function render() {
       <h1>Barcode Scanner</h1>
       <p id="result"></p>
       <video id="video" style="width: 100%; height: auto;"></video>
-      <button id="btnStopScan" class="big-btn red-btn">Stop</button>
+      <button id="btnScan" class="big-btn red-btn">Stop Scan</button>
     </div>
   `;
 };
@@ -86,8 +89,13 @@ export function init(root) {
     stopScanning();
   });
 
-  root.querySelector("#btnStopScan").onclick = () => {
-    stopScanning();
+  root.querySelector("#btnScan").onclick = () => {
+    if (scanning) {
+      stopScanning();  
+    } else {
+      startScanning(root);
+    }
+    
     window.location.hash = "#/stock";
   };
 
