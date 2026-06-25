@@ -57,7 +57,7 @@ function startScanning(root) {
 function stopScanning() {
 
   const videoElement = currentRoot.querySelector("#video");
-  const buttonElement = root.querySelector("#btnScan");
+  const buttonElement = currentRoot.querySelector("#btnScan");
   
   buttonElement.textContent = "Nieuwe Scan";
 
