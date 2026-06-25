@@ -19,7 +19,6 @@ function startScanning(root) {
   scanning = true;
 
   const resultElement = root.querySelector("#result");
-  const buttonElement = root.querySelector("#btnScan");
   const videoElement = root.querySelector("#video");
 
   if (videoElement.srcObject) {
@@ -27,7 +26,6 @@ function startScanning(root) {
   }
 
   resultElement.textContent = "";
-  buttonElement.textContent = "Stop Scan";
 
   codeReader.decodeFromConstraints(
     {
@@ -51,9 +49,6 @@ stopScanning();
 function stopScanning() {
 
   const videoElement = currentRoot.querySelector("#video");
-  const buttonElement = currentRoot.querySelector("#btnScan");
-  
-  buttonElement.textContent = "Nieuwe Scan";
 
   codeReader.reset();
 
