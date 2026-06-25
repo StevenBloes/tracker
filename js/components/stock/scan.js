@@ -19,11 +19,15 @@ function startScanning(root) {
   scanning = true;
 
   const resultElement = root.querySelector("#result");
+  const buttonElement = root.querySelector("#btnScan");
   const videoElement = root.querySelector("#video");
 
   if (videoElement.srcObject) {
     videoElement.srcObject.getTracks().forEach(track => track.stop());
   }
+
+  resultElement.textContent = "";
+  buttonElement.textContent = "Stop Scan";
 
   codeReader.decodeFromConstraints(
     {
