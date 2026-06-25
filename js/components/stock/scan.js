@@ -83,6 +83,7 @@ export function render() {
 
 
 export function init(root) {
+scanning = false;
   window.addEventListener("beforeunload", () => {
     stopScanning();
   });
