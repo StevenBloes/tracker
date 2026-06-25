@@ -41,7 +41,7 @@ function startScanning(root) {
         } catch (e) {
           console.log(e);
         }
-
+stopScanning();
         window.location.hash = `#/stock/pallet/${result}`;
       }
     }
