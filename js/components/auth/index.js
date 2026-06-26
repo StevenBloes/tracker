@@ -14,10 +14,7 @@ export function render() {
         <h2 id="authH2" class="auth-h2"></h2>
       </div>
 
-      <div id="child-outlet" class="auth-action-container">
-        <button id="btnShowLogin" class="auth-login-btn">Log in</button>
-        <button id="btnShowSignUp" class="auth-signup-btn">Registreer</button>
-      </div>
+      <div id="child-outlet" class="auth-action-container"></div>
       
       <p id="btnForgetPw" class="auth-p">Wachtwoord vergeten?</p>
       <div id="msgForgetPw" class="auth-help-container hidden">Contacteer uw IT-departement<br>voor verdere hulp.</div>
@@ -26,12 +23,6 @@ export function render() {
 }
 
 export function init(root) {
-  root.querySelector("#btnShowLogin").onclick = () => {
-    window.location.hash = "#/auth/login";
-  };
-  root.querySelector("#btnShowSignUp").onclick = () => {
-    window.location.hash = "#/auth/signup";
-  };
   root.querySelector("#btnForgetPw").onclick = () => {
     root.querySelector("#msgForgetPw").classList.toggle("hidden");
   };
