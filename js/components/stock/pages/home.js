@@ -1,4 +1,6 @@
-export const title = "KLA W32 - Pallet Stock";
+export const title = "KLA W32 | Pallet Stock Home";
+export const appBarTitle = "Stock Paletten";
+
 
 export function render() {
   return `

@@ -1,4 +1,5 @@
-export const title = "KLA W32 - Pallet Stock";
+export const title = "KLA W32 | Pallet Locatie";
+export const appBarTitle = "Pallet Locatie";
 
 export function render(id) {
   return `<h1>map ${id}</h1>`;

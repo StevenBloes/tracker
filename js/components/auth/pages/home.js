@@ -1,4 +1,5 @@
-export const title = "KLA W32 - Pallet Stock";
+export const title = "KLA W32 | Authentication Home";
+
 
 export function render() {
     return `

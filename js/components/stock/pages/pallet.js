@@ -1,4 +1,6 @@
-export const title = "KLA W32 - Pallet Stock";
+export const title = "KLA W32 | Pallet Info";
+export const appBarTitle = "Pallet Info";
+
 
 let palletId = null;
 

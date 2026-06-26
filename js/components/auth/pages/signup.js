@@ -1,6 +1,6 @@
-export const title = "KLA W32 | Registereer";
+export const title = "KLA W32 | Registratie";
 
-import { signUp } from "../../services/authService.js";
+import { signUp } from "../../../services/authService.js";
 
 
 async function submitSignUp(e) {

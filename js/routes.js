@@ -10,21 +10,21 @@ const routes = {
     "#/auth": {
         component: "auth/index",
         children: {
-            "": "auth/home",
-            "login": "auth/login",
-            "signup": "auth/signup"
+            "": "auth/pages/home",
+            "login": "auth/pages/login",
+            "signup": "auth/pages/signup"
         }
     },
     "#/stock": {
         component: "stock/index",
         children: {
-            "": "stock/home",
-            "map": "stock/map",
-            "move": "stock/move",
-            "pallet": "stock/pallet",
-            "search": "stock/search",
-            "scan": "stock/scan",
-            "stage": "stock/stage"
+            "": "stock/pages/home",
+            "map": "stock/pages/map",
+            "move": "stock/pages/move",
+            "pallet": "stock/pages/pallet",
+            "search": "stock/pages/search",
+            "scan": "stock/pages/scan",
+            "stage": "stock/pages/stage"
         }
     }
 };
@@ -73,7 +73,7 @@ async function loadComponent(name) {
 
     const module = await import(`./components/${name}.js`);
 
-    document.title = module.title || "My App";
+    document.title = module.title || "KLA W32 | Applicatie";
 
     app.innerHTML = "";
 
@@ -91,7 +91,7 @@ async function loadComponent(name) {
 }
 
 async function loadChildComponent(name, param) {
-    const titleElement = document.getElementById("page-title");
+    const appBarElement = document.getElementById("app-bar");
     const outlet = document.getElementById("child-outlet");
 
     if (!outlet) return;
@@ -100,11 +100,9 @@ async function loadChildComponent(name, param) {
 
         const module = await import(`./components/${name}.js`);
 
-        if (titleElement) {
-            titleElement.textContent = module.title || "";
-        }
+        appBarElement ? appBarElement.textContent = module.appBarTitle || "" : "KLA W32 Applicatie";
 
-        document.title = module.title || "My App";
+        document.title = module.title || "KLA W32 | Applicatie";
 
         outlet.innerHTML = module.render(param);
 

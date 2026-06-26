@@ -1,8 +1,9 @@
-export const title = "KLA W32 - Zoek Pallet";
+export const title = "KLA W32 | Zoek Pallet";
+export const appBarTitle = "Zoek Pallet";
 
 export function render() {
   return `
-    <h1>Zoek Pallet</h1>
+    <p>Zoek Pallet</p>
   `;
 };
 

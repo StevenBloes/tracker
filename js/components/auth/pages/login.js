@@ -1,6 +1,6 @@
 export const title = "KLA W32 | Log in";
 
-import { login } from "../../services/authService.js";
+import { login } from "../../../services/authService.js";
 
 
 async function submitLogin(e) {
