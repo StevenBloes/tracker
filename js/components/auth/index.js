@@ -1,3 +1,5 @@
+import { CompanyIcon } from "../../../icons/index.js";
+
 export const title = "KLA W32 | Authentication";
 
 
@@ -6,7 +8,7 @@ export function render() {
     <div class="auth-container">
 
       <div class="auth-logo-container">
-        <img src="./img/favicon.svg" alt="Company Logo" width="55%">
+        ${CompanyIcon("55%")}
       </div>
 
       <div class="auth-text-container">

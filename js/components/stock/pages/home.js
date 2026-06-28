@@ -5,7 +5,7 @@ export const appBarTitle = "Stock Paletten";
 export function render() {
   return `
     <div class="button-container">
-      <button id="btnProducts" class="white-btn">Zoek pallet op product</button>
+      <button id="btnProducts" class="white-btn">Zoek Product</button>
       <button id="btnBarcodes" class="white-btn">Scan Barcode</button>
     </div>
   `;

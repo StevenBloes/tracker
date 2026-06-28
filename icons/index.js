@@ -1,3 +1,7 @@
+/*
+  SVG images used throughout the webapp.
+*/
+
 export function BackIcon(size = "100%", color = "#4ea13f"){
     return `
       <svg
@@ -87,4 +91,27 @@ export function LockIcon(size = "100%", color= "#4ea13f"){
         <path class="outer" d="M 35,40 C 35,3 75,3 75,40" />
       </svg>
     `;
+}
+
+export function CompanyIcon(size = "100%", color = "#4ea13f"){
+  return `
+    <svg
+      width="${size}" 
+      height="${size}" 
+      viewBox="0 0 780 781">
+      <style>
+        .logo-style {
+          fill: ${color};
+          stroke: ${color};
+          stroke-width: 1px;
+        }
+      </style>
+        <g class="logo-style">
+          <rect x="275" y="380" width="40" height="20" />
+          <rect x="0" y="20" width="290" height="740" />
+          <path d="M 280 390 C 250 50, 551 19, 740 0 C 720 480, 340 380, 280 390" />
+          <path d="M 280 390 C 250 720, 551 761, 740 780 C 720 300, 340 400, 280 390" />
+        </g>
+    </svg>
+  `;
 }

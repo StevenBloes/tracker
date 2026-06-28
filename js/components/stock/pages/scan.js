@@ -11,8 +11,8 @@ hints.set(ZXing.DecodeHintType.POSSIBLE_FORMATS, [
 const codeReader = new ZXing.BrowserBarcodeReader(hints);
 
 let currentRoot = null;
+let lastBarcode = null;
 let scanning = false;
-
 
 async function isCameraSupported() {
   if (!navigator.mediaDevices?.enumerateDevices) {
@@ -33,20 +33,18 @@ async function isCameraSupported() {
 }
 
 function startScanning(root) {
-
   if (scanning) return;
 
   currentRoot = root;
   scanning = true;
 
-  const resultElement = root.querySelector("#result");
+  const resultElement = root.querySelector("#fldBarcode");
   const videoElement = root.querySelector("#video");
+
   if (videoElement) {
     if (videoElement.srcObject) {
       videoElement.srcObject.getTracks().forEach(track => track.stop());
     }
-
-    resultElement.textContent = "";
 
     codeReader.decodeFromConstraints(
       {
@@ -55,13 +53,21 @@ function startScanning(root) {
       videoElement,
       (result, err) => {
         if (result) {
-          try {
-            navigator.vibrate?.([100, 50, 100]);
-          } catch (e) {
-            console.log(e);
+          const value = result.text || result;
+
+          // stopScanning();
+          if (lastBarcode !== result) {
+            lastBarcode = result;
+            resultElement.value = result;
+
+            try {
+              if (scanning) {
+                navigator.vibrate?.([100, 50, 100]);
+              }
+            } catch (e) {
+              console.log(e);
+            }
           }
-          stopScanning();
-          window.location.hash = `#/stock/pallet/${result}`;
         }
       }
     );
@@ -92,8 +98,10 @@ function stopScanning() {
 export function render() {
   return `
     <div class="container">
-      <label>Barcode<label>
-      <input id="result" placeholder="barcode"></input>
+      <div class="scan-fld-container">
+        <input id="fldBarcode" placeholder="barcode" type="text" inputmode="numeric" pattern="[0-9]*"></input>
+        <button id="btnSearch">Zoek</button>
+      </div>
       <div class="scan-input-container">
         <div id="no-video">
           Checking Camera Support<br>
@@ -118,6 +126,11 @@ export async function init(root) {
   window.addEventListener("beforeunload", () => {
     stopScanning();
   });
+
+  root.querySelector("#btnSearch").onclick = () => {
+    const result = root.querySelector("#fldBarcode").value;
+    window.location.hash = `#/stock/pallet/${result}`;
+  };
 
   root.querySelector("#btnScan").onclick = () => {
     if (scanning) {

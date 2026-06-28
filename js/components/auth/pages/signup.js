@@ -19,7 +19,6 @@ async function submitSignUp(e) {
 
 export function render() {
     return `
-    <div style="width:100%;">
       <div class="auth-input-container">
         <div class="auth-input-wrapper">
           <span class="icon">${MailIcon("1.3em")}</span>
@@ -31,7 +30,7 @@ export function render() {
         </div>
       </div>
       <button id="btnSignUp" class="auth-signup-btn">Registreer</button>
-    </div>
+    
   `;
 };
 

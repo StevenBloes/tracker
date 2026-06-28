@@ -16,19 +16,7 @@ async function submitLogin(e) {
     sessionStorage.removeItem("redirectAfterLogin");
     window.location.hash = redirect;
 }
-/*
-export function render() {
-    return `
-    <div style="width:100%;">
-      <div class="auth-input-container">
-        <input id="email" type="email" placeholder="Email" class="auth-input auth-user-input">
-        <input id="password" type="password" placeholder="Password" class="auth-input auth-password-input">
-      </div>
-      <button id="btnLogin" class="auth-login-btn">Log in</button>
-    </div>    
-  `;
-};
-*/
+
 export function render() {
   return `
       <div class="auth-input-container">
