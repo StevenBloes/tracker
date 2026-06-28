@@ -119,7 +119,7 @@
 
 .auth-input {
   font-size: 1.1em;
-  width: 80%;
+  width: 70%;
   padding: 0.4em 0.2em;
   padding-left: 2em;
   border-radius: 6px;
@@ -138,16 +138,23 @@
   outline-style: solid;
 }
 
-.auth-user-input {
-  background-image: url('../img/mail.svg');
-	background-size: 1.2em 1.2em;
-	background-position: 0.4em 0.4em;
-	background-repeat: no-repeat;
+.auth-input-wrapper {
+  position: relative;
+  width: 100%;
 }
 
-.auth-password-input {
-  background-image: url('../img/lock.svg');
-	background-size: 1.2em 1.2em;
-	background-position: 0.4em 0.4em;
-	background-repeat: no-repeat;
+.auth-input-wrapper .icon {
+  position: absolute;
+  left: 0.6em;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-input-wrapper input {
+  width: 80%;
+  padding-left: 2.2em; /* space for icon */
 }

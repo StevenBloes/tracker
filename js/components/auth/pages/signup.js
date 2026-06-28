@@ -1,6 +1,7 @@
 export const title = "KLA W32 | Registratie";
 
 import { signUp } from "../../../services/authService.js";
+import { MailIcon, LockIcon } from "../../../../icons/index.js";
 
 
 async function submitSignUp(e) {
@@ -18,10 +19,16 @@ async function submitSignUp(e) {
 
 export function render() {
     return `
-   <div style="width:100%;">
+    <div style="width:100%;">
       <div class="auth-input-container">
-        <input id="email" type="email" placeholder="Email" class="auth-input auth-user-input">
-        <input id="password" type="password" placeholder="Password" class="auth-input auth-password-input">
+        <div class="auth-input-wrapper">
+          <span class="icon">${MailIcon("1.3em")}</span>
+          <input id="email" type="email" placeholder="Email" class="auth-input">
+        </div>
+        <div class="auth-input-wrapper">
+          <span class="icon">${LockIcon("1.3em")}</span>
+          <input id="password" type="password" placeholder="Password" class="auth-input">
+        </div>
       </div>
       <button id="btnSignUp" class="auth-signup-btn">Registreer</button>
     </div>
