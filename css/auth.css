@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
   background: linear-gradient(to bottom,
       #E8F5E9,
       #FFFFFF);
@@ -56,8 +57,9 @@
   align-content: center;
   justify-content: center;
   align-items: center;
+  width: 100%;
   row-gap: 0.5em;
-  margin-bottom: 5%;
+  margin-bottom: 0.6em;
 }
 
 .auth-help-container {
@@ -117,7 +119,23 @@
   padding: 0.3em 0.2em;
 }
 
-.auth-input {
+.auth-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.auth-input-wrapper .icon svg {
+  position: absolute;
+  left: 0.6em;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-input-wrapper .auth-input {
   font-size: 1.1em;
   width: 100%;
   padding: 0.4em 0.2em;
@@ -125,6 +143,7 @@
   border-radius: 6px;
   background-color: #F6F6F6;
   border: solid #F2F2F2 2px;
+  box-sizing: border-box;
 }
 
 .auth-input::placeholder {
@@ -136,25 +155,4 @@
   outline-color: #5FBF5A;
   outline-width: 2px;
   outline-style: solid;
-}
-
-.auth-input-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.auth-input-wrapper .icon {
-  position: absolute;
-  left: 0.6em;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.auth-input-wrapper input {
-  width: 80%;
-  padding-left: 2.2em; /* space for icon */
 }

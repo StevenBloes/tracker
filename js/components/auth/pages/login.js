@@ -31,7 +31,6 @@ export function render() {
 */
 export function render() {
   return `
-    <div style="width:100%;">
       <div class="auth-input-container">
         <div class="auth-input-wrapper">
           <span class="icon">${MailIcon("1.3em")}</span>
@@ -43,7 +42,6 @@ export function render() {
         </div>
       </div>
       <button id="btnLogin" class="auth-login-btn">Log in</button>
-    </div>
   `;
 }
 
