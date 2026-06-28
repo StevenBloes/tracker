@@ -80,26 +80,31 @@ body {
   justify-content: space-around;
 }
 
-#fldBarcode {
+.input-fld {
   font-size: 1.1em;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 100%;
   padding: 0.4em 0.2em;
   border-radius: 6px;
   background-color: #F4F4F4;
   border: solid #EEEEEE 2px;
+  box-sizing: border-box;
 }
 
-#fldBarcode::placeholder {
+.input-fld::placeholder {
   color: #DDD;
 }
 
-#fldBarcode:focus {
+.input-fld:focus {
   background-color: #FFF;
   outline-color: #5FBF5A;
   outline-width: 2px;
   outline-style: solid;
+}
+
+#fldBarcode {
+  width: 70%;
 }
 
 #btnSearch {
@@ -125,6 +130,7 @@ body {
   max-height: 10%;
   top: 0;
   z-index: 1;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
 }
 
 #app-bar-title {
@@ -171,4 +177,64 @@ body {
 .card-value {
   font-weight: 600;
   color: #333;
+}
+
+.product-list {
+  background-color: white;
+  border-radius: 8px;
+  border: solid #EEE 1px;
+  padding: 0em 1em;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+.product-item {
+  padding: 0.6em 0.3em;
+  border-bottom: solid #EEE 1px;
+}
+
+.product-item:last-child {
+  border-bottom: none;
+}
+
+.product-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.product-header-name {
+  font-weight:600;
+}
+
+.product-header-amount {
+  color: blue;
+  font-weight: 600;
+}
+
+.pallet-item {
+  margin-left: 0.6em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  border-bottom: solid #EEE 1px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pallet-item:last-child {
+  border-bottom: none;
+}
+
+.pallet-item-id {
+  color:#333;
+}
+
+.pallet-item-location {
+  color:#666;
+}
+
+.pallet-item-amount {
+  color: blue;
 }

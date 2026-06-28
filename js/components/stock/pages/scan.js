@@ -99,7 +99,7 @@ export function render() {
   return `
     <div class="container">
       <div class="scan-fld-container">
-        <input id="fldBarcode" placeholder="barcode" type="text" inputmode="numeric" pattern="[0-9]*"></input>
+        <input id="fldBarcode" placeholder="barcode" type="text" inputmode="numeric" pattern="[0-9]*" class="input-fld"></input>
         <button id="btnSearch">Zoek</button>
       </div>
       <div class="scan-input-container">
