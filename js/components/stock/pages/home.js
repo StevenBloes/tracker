@@ -5,8 +5,8 @@ export const appBarTitle = "Stock Paletten";
 export function render() {
   return `
     <div class="button-container">
-      <button id="btnProducts" class="big-btn">Zoek pallet op product</button>
-      <button id="btnBarcodes" class="big-btn">Scan Barcode</button>
+      <button id="btnProducts" class="white-btn">Zoek pallet op product</button>
+      <button id="btnBarcodes" class="white-btn">Scan Barcode</button>
     </div>
   `;
 };

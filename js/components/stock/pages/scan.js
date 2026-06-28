@@ -100,7 +100,7 @@ export function render() {
           ...
         </div>
       </div>            
-      <button id="btnScan" class="big-btn red-btn">Stop Scan</button>
+      <button id="btnScan" class="red-btn">Stop Scan</button>
     </div>
   `;
 };
@@ -108,7 +108,6 @@ export function render() {
 
 export async function init(root) {
   const supported = await isCameraSupported();
-  console.log(supported);
   const container = document.querySelector(".scan-input-container");
 
   container.innerHTML = supported
@@ -132,6 +131,7 @@ export async function init(root) {
   startScanning(root);
 }
 
-export function destroy() {
+export function destroy(root) {
+  currentRoot = root;
   stopScanning();
 }

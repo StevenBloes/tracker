@@ -4,13 +4,42 @@ export const appBarTitle = "Pallet Info";
 
 let palletId = null;
 
+async function retrievePalletData(root, id){
+  root.querySelector("#product").textContent = "product naam";
+  root.querySelector("#amount").textContent = "xxx kg";
+  root.querySelector("#location").textContent = "locatie";
+  root.querySelector("#deliveryDate").textContent = "DD/MM/YYYY";
+}
+
 export function render(id) {
   return `
-    <h1>${id}</h1>
+    <div class="pallet-info-card">
+      <div class="pallet-info-row">
+        <div class="card-label">Pallet ID:</div>
+        <div id="barcode" class="card-value">${id}</div>
+      </div>
+      <div class="pallet-info-row">
+        <div class="card-label">Product:</div>
+        <div id="product" class="card-value">product naam</div>
+      </div>
+      <div class="pallet-info-row">
+        <div class="card-label">Hoeveelheid:</div>
+        <div id="amount" class="card-value">aantal kg</div>
+      </div>
+      <div class="pallet-info-row">
+        <div class="card-label">Locatie:</div>
+        <div id="location" class="card-value">opslag locatie</div>
+      </div>
+      <div class="pallet-info-row">
+        <div class="card-label">Leveringsdatum:</div>
+        <div id="deliveryDate" class="card-value">DD/MM/YYYY</div>
+      </div>
+    </div>
+
     <div class="button-container">
-      <button id="btnMap" class="big-btn">Toon op Kaart</button>
-      <button id="btnMove" class="big-btn">Verplaats pallet</button>
-      <button id="btnStage" class="big-btn">Neem zakken af voor productievoorraad</button>
+      <button id="btnMap" class="white-btn">Toon Locatie</button>
+      <button id="btnMove" class="white-btn">Wijzig Locatie</button>
+      <button id="btnStage" class="white-btn">Wijzig Hoeveelheid</button>
     </div>
   `;
 };
@@ -18,6 +47,8 @@ export function render(id) {
 export function init(root, id) {
 
   palletId = id;
+
+  retrievePalletData(root, id);
 
   root.querySelector("#btnMap").onclick = () => { 
     console.log("button clicked");
