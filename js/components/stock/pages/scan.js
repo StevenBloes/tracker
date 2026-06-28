@@ -14,26 +14,22 @@ let currentRoot = null;
 let scanning = false;
 
 
-function isCameraSupported() {
+async function isCameraSupported() {
   if (!navigator.mediaDevices?.enumerateDevices) {
     console.log("enumerateDevices() not supported.");
-    return false;
-  } else {
-    navigator.mediaDevices
-      .enumerateDevices()
-      .then((devices) => {
-        const videoInputDevices = devices.filter((device) => device.kind == 'videoinput');
-        if (videoInputDevices.length > 0) {
-          return true;
-        } else {
-          return false;
-        }
-      })
-      .catch((err) => {
-        console.error(`${err.name}: ${err.message}`);
-        return false;
-      });
+    return Promise.resolve(false);
   }
+
+  return navigator.mediaDevices
+    .enumerateDevices()
+    .then((devices) => {
+      const videoInputDevices = devices.filter((device) => device.kind === 'videoinput');
+      return videoInputDevices.length > 0;
+    })
+    .catch((err) => {
+      console.error(`${err.name}: ${err.message}`);
+      return false;
+    });
 }
 
 function startScanning(root) {
@@ -99,19 +95,26 @@ export function render() {
       <label>Barcode<label>
       <input id="result" placeholder="barcode"></input>
       <div class="scan-input-container">
-        ${isCameraSupported() ?
-          `<video id="video" style="width: 100%; height: auto;"></video>` :
-          `<div id="no-video">No Camera Support</div>`
-        } 
-      </div>      
-      
+        <div id="no-video">
+          Checking Camera Support<br>
+          ...
+        </div>
+      </div>            
       <button id="btnScan" class="big-btn red-btn">Stop Scan</button>
     </div>
   `;
 };
 
 
-export function init(root) {
+export async function init(root) {
+  const supported = await isCameraSupported();
+  console.log(supported);
+  const container = document.querySelector(".scan-input-container");
+
+  container.innerHTML = supported
+    ? `<video id="video" style="width: 100%; height: auto;"></video>`
+    : `<div id="no-video">No Camera Support</div>`;
+
   scanning = false;
   window.addEventListener("beforeunload", () => {
     stopScanning();

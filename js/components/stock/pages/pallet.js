@@ -7,9 +7,11 @@ let palletId = null;
 export function render(id) {
   return `
     <h1>${id}</h1>
-    <button id="btnMap" class="big-btn">Toon op Kaart</button>
-    <button id="btnMove" class="big-btn">Verplaats pallet</button>
-    <button id="btnStage" class="big-btn">Neem zakken af voor productievoorraad</button>
+    <div class="button-container">
+      <button id="btnMap" class="big-btn">Toon op Kaart</button>
+      <button id="btnMove" class="big-btn">Verplaats pallet</button>
+      <button id="btnStage" class="big-btn">Neem zakken af voor productievoorraad</button>
+    </div>
   `;
 };
 

@@ -2,6 +2,7 @@ import { checkUser } from "./services/authService.js";
 import { supabaseClient } from "./services/supabaseClient.js";
 
 let currentComponent = null;
+let currentChild = null;
 let currentRoot = null;
 let currentBase = null;
 
@@ -91,14 +92,21 @@ async function loadComponent(name) {
 }
 
 async function loadChildComponent(name, param) {
-    const appBarElement = document.getElementById("app-bar");
+    const appBarElement = document.getElementById("app-bar-title");
     const outlet = document.getElementById("child-outlet");
 
     if (!outlet) return;
+
     try {
+
+        if (currentChild?.destroy) {
+            currentChild.destroy(currentRoot);
+        }
+
         outlet.innerHTML = "Loading...";
 
         const module = await import(`./components/${name}.js`);
+        currentChild = module;
 
         appBarElement ? appBarElement.textContent = module.appBarTitle || "" : "KLA W32 Applicatie";
 
