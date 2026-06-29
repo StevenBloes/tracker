@@ -6,13 +6,13 @@ export const product_data = {
             "totalAmount": 120,
             "pallets": [
                 {
-                    "palletId": "2026061363201",
+                    "palletId": "2026061360011",
                     "location": "A",
                     "amount": 40,
                     "delivery_date": "15-06-2026"
                 },
                 {
-                    "palletId": "2026021363201",
+                    "palletId": "2026021360011",
                     "location": "A",
                     "amount": 80,
                     "delivery_date": "10-02-2026"
@@ -25,13 +25,13 @@ export const product_data = {
             "totalAmount": 75,
             "pallets": [
                 {
-                    "palletId": "2026031753201",
+                    "palletId": "2026031750011",
                     "location": "D",
                     "amount": 25,
                     "delivery_date": "09-03-2026"
                 },
                 {
-                    "palletId": "2026031753202",
+                    "palletId": "2026031750026",
                     "location": "D",
                     "amount": 50,
                     "delivery_date": "09-03-2026"
@@ -44,19 +44,19 @@ export const product_data = {
             "totalAmount": 310,
             "pallets": [
                 {
-                    "palletId": "2026051103201",
+                    "palletId": "2026051100011",
                     "location": "A",
                     "amount": 100,
                     "delivery_date": "23-05-2026"
                 },
                 {
-                    "palletId": "2026051103202",
+                    "palletId": "2026051100021",
                     "location": "A",
                     "amount": 90,
                     "delivery_date": "23-05-2026"
                 },
                 {
-                    "palletId": "2026051103203",
+                    "palletId": "2026051100031",
                     "location": "B",
                     "amount": 120,
                     "delivery_date": "23-05-2026"
@@ -69,13 +69,13 @@ export const product_data = {
             "totalAmount": 48,
             "pallets": [
                 {
-                    "palletId": "2026061413201",
+                    "palletId": "2026061410011",
                     "location": "C",
                     "amount": 20,
                     "delivery_date": "03-06-2026"
                 },
                 {
-                    "palletId": "2026061413202",
+                    "palletId": "2026061410021",
                     "location": "C",
                     "amount": 28,
                     "delivery_date": "03-06-2026"
