@@ -1,84 +1,8 @@
+import { product_data } from "../../../services/test_data.js";
+
 export const title = "KLA W32 | Zoek Product";
 export const appBarTitle = "Zoek Product";
 
-
-const product_data = {
-  "products": [
-    {
-      "id": "P-1001",
-      "name": "Basacote 9Mnd",
-      "totalAmount": 120,
-      "pallets": [
-        {
-          "palletId": "PAL-001",
-          "location": "A",
-          "amount": 40
-        },
-        {
-          "palletId": "PAL-002",
-          "location": "A",
-          "amount": 80
-        }
-      ]
-    },
-    {
-      "id": "P-1002",
-      "name": "DCM Instant TD",
-      "totalAmount": 75,
-      "pallets": [
-        {
-          "palletId": "PAL-010",
-          "location": "D",
-          "amount": 25
-        },
-        {
-          "palletId": "PAL-011",
-          "location": "D",
-          "amount": 50
-        }
-      ]
-    },
-    {
-      "id": "P-1003",
-      "name": "Osmocote 8/9Mnd",
-      "totalAmount": 310,
-      "pallets": [
-        {
-          "palletId": "PAL-020",
-          "location": "A",
-          "amount": 100
-        },
-        {
-          "palletId": "PAL-021",
-          "location": "A",
-          "amount": 90
-        },
-        {
-          "palletId": "PAL-022",
-          "location": "B",
-          "amount": 120
-        }
-      ]
-    },
-    {
-      "id": "P-1004",
-      "name": "PG-Mix 14/10/18",
-      "totalAmount": 48,
-      "pallets": [
-        {
-          "palletId": "PAL-030",
-          "location": "C",
-          "amount": 20
-        },
-        {
-          "palletId": "PAL-031",
-          "location": "C",
-          "amount": 28
-        }
-      ]
-    }
-  ]
-};
 
 function loadData(root) {
   const productList = root.querySelector("#productList");

@@ -1,14 +1,42 @@
+import { product_data } from "../../../services/test_data.js";
+
 export const title = "KLA W32 | Pallet Info";
 export const appBarTitle = "Pallet Info";
 
 
 let palletId = null;
 
-async function retrievePalletData(root, id){
-  root.querySelector("#product").textContent = "product naam";
-  root.querySelector("#amount").textContent = "xxx kg";
-  root.querySelector("#location").textContent = "locatie";
-  root.querySelector("#deliveryDate").textContent = "DD/MM/YYYY";
+function retrievePalletData(id) {
+
+  for (const product of product_data.products) {
+    const pallet = product.pallets.find(p => p.palletId === id);
+
+    if (pallet) {
+      return {
+        name: product.name,
+        location: pallet.location,
+        amount: pallet.amount,
+        delivery_date: pallet.delivery_date
+      };
+    }
+  }
+
+  return null;
+
+}
+
+function insertPalletData(root, palletData) {
+  if (palletData) {
+    root.querySelector("#product").textContent = palletData.name;
+    root.querySelector("#amount").textContent = `${palletData.amount} kg`;
+    root.querySelector("#location").textContent = palletData.location;
+    root.querySelector("#deliveryDate").textContent = palletData.delivery_date;
+  } else {
+    root.querySelector("#product").textContent = "product naam";
+    root.querySelector("#amount").textContent = "xxx kg";
+    root.querySelector("#location").textContent = "locatie";
+    root.querySelector("#deliveryDate").textContent = "DD/MM/YYYY";
+  }
 }
 
 export function render(id) {
@@ -39,7 +67,7 @@ export function render(id) {
     <div class="button-container">
       <button id="btnMap" class="white-btn">Toon Locatie</button>
       <button id="btnMove" class="white-btn">Wijzig Locatie</button>
-      <button id="btnStage" class="white-btn">Wijzig Hoeveelheid</button>
+      <button id="btnStage" class="white-btn">Productievoorraad</button>
     </div>
   `;
 };
@@ -48,17 +76,18 @@ export function init(root, id) {
 
   palletId = id;
 
-  retrievePalletData(root, id);
+  const palletData = retrievePalletData(id);
+  insertPalletData(root, palletData);
 
-  root.querySelector("#btnMap").onclick = () => { 
+  root.querySelector("#btnMap").onclick = () => {
     console.log("button clicked");
     window.location.hash = `#/stock/map/${id}`;
   };
-  root.querySelector("#btnMove").onclick = () => { 
+  root.querySelector("#btnMove").onclick = () => {
     console.log("button clicked");
     window.location.hash = `#/stock/move/${id}`;
   };
-  root.querySelector("#btnStage").onclick = () => { 
+  root.querySelector("#btnStage").onclick = () => {
     console.log("button clicked");
     window.location.hash = `#/stock/stage/${id}`;
   }
